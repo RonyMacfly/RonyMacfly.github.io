@@ -14,33 +14,50 @@
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit-icons.min.js"></script>
 
-<!-- menu JS -->
-<script>
-const url = "menu.html"
-fetch(url)
-   .then( r => r.text() )
-   .then( t => document.getElementById("menu").innerHTML = t )
-</script>
-
 <!-- highlight js -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.0/styles/default.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 <link rel="stylesheet" href="stackoverflow-light.css">
 
+<!-- menu JS -->
+<script>
+document.addEventListener('DOMContentLoaded', function()
+{ 
+    const url = "menu.html"
+    fetch(url)
+   .then( r => r.text() )
+   .then( t => document.getElementById("menu").innerHTML = t )
+}, false);
+</script>
+
 </head>
 
 <body class="uk-container"> 
-    
+
 <div id="menu"></div>
 
 <article class="uk-article">
-<h1 class="uk-article-title"><a class="uk-link-reset" href="">Heading</a></h1>
+<h1<a class="uk-link-reset" href="">976. Largest Perimeter Triangle</a></h1>
 <p class="uk-article-meta">Written by <a href="#">Ron</a> on 010111 April 000112011. Posted in <a href="#">Blog</a></p>
 
-<p class="uk-text-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+<pre><code class="text">Given an integer array nums, return the largest perimeter of a triangle
+ with a non-zero area, formed from three of these lengths. 
+ If it is impossible to form any triangle of a non-zero area, return 0.</code></pre>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<pre><code>
+Example 1:
+Input: nums = [2,1,2]
+Output: 5
+
+Example 2:
+Input: nums = [1,2,1]
+Output: 0
+ 
+Constraints:
+3 <= nums.length <= 104
+1 <= nums[i] <= 106
+</code></pre>
 
 <pre><code class="python">
 from typing import List

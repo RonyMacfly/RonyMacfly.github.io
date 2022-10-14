@@ -18,16 +18,20 @@
 
 <!-- menu JS -->
 <script>
-const url = "menu.html"
-fetch(url)
+document.addEventListener('DOMContentLoaded', function()
+{ 
+    const url = "menu.html"
+    fetch(url)
    .then( r => r.text() )
    .then( t => document.getElementById("menu").innerHTML = t )
-    
-/*$(document).ready(function()
-{
-    $("#menu").load("menu.html");
-});*/
+}, false);
 </script>
+
+<!-- highlight js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<link rel="stylesheet" href="stackoverflow-light.css">
 
 </head>
     
@@ -39,55 +43,17 @@ fetch(url)
 </div>-->
 <div id="menu"></div>
 
-<a href="1.html" class="uk-display-block uk-card uk-card-body uk-card-default uk-link-reset">
-<h3 class="uk-card-title"><span class="uk-link-heading">Heading</span></h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</a><br>
+<a href="1.html"><pre><code>Largest Perimeter Triangle [theory task]</code></pre></a>
+<a href=".html"><pre><code>...</code></pre></a>
+<a href=".html"><pre><code>...</code></pre></a>
+<a href=".html"><pre><code>...</code></pre></a>
+<a href=".html"><pre><code>...</code></pre></a>
+<a href=".html"><pre><code>...</code></pre></a>
+<a href=".html"><pre><code>...</code></pre></a>
+<a href=".html"><pre><code>...</code></pre></a>
+<a href=".html"><pre><code>...</code></pre></a>
+<a href=".html"><pre><code>...</code></pre></a>
 
-<a href="" class="uk-display-block uk-card uk-card-body uk-card-default uk-link-reset">
-<h3 class="uk-card-title"><span class="uk-link-heading">Heading</span></h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</a><br>
-
-<a href="" class="uk-display-block uk-card uk-card-body uk-card-default uk-link-reset">
-<h3 class="uk-card-title"><span class="uk-link-heading">Heading</span></h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</a><br>
-
-<a href="" class="uk-display-block uk-card uk-card-body uk-card-default uk-link-reset">
-<h3 class="uk-card-title"><span class="uk-link-heading">Heading</span></h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</a><br>
-
-<a href="" class="uk-display-block uk-card uk-card-body uk-card-default uk-link-reset">
-<h3 class="uk-card-title"><span class="uk-link-heading">Heading</span></h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</a><br>
-
-<a href="" class="uk-display-block uk-card uk-card-body uk-card-default uk-link-reset">
-<h3 class="uk-card-title"><span class="uk-link-heading">Heading</span></h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</a><br>
-
-<a href="" class="uk-display-block uk-card uk-card-body uk-card-default uk-link-reset">
-<h3 class="uk-card-title"><span class="uk-link-heading">Heading</span></h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</a><br>
-
-<a href="" class="uk-display-block uk-card uk-card-body uk-card-default uk-link-reset">
-<h3 class="uk-card-title"><span class="uk-link-heading">Heading</span></h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</a><br>
-
-<a href="" class="uk-display-block uk-card uk-card-body uk-card-default uk-link-reset">
-<h3 class="uk-card-title"><span class="uk-link-heading">Heading</span></h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</a><br>
-
-<a href="" class="uk-display-block uk-card uk-card-body uk-card-default uk-link-reset">
-<h3 class="uk-card-title"><span class="uk-link-heading">Heading</span></h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-</a><br>
 
 <!-- <div>
 <a class="uk-position-center-left" href="" uk-slidenav-previous></a>
