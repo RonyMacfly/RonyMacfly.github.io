@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>1 html</title>
+<title>Set Mismatch [theory task]</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
@@ -21,36 +21,96 @@
 <script>hljs.highlightAll();</script>
 <link rel="stylesheet" href="stackoverflow-light.css">
 
+<!-- highlight auto line wrap -->
+<style>
+pre, code {
+    white-space: pre-wrap;
+}
+</style>
+
+<!-- menu JS -->
+<script>
+document.addEventListener('DOMContentLoaded', function()
+{ 
+    const url = "menu.html"
+    fetch(url)
+   .then( r => r.text() )
+   .then( t => document.getElementById("menu").innerHTML = t )
+}, false);
+</script>
+
 </head>
 
-<body class="uk-container">
+<body class="uk-container"> 
+
+<div id="menu"></div>
+
 <article class="uk-article">
-<h1 class="uk-article-title"><a class="uk-link-reset" href="">Heading</a></h1>
+<h1<a class="uk-link-reset" href="">645. Set Mismatch</a></h1>
 <p class="uk-article-meta">Written by <a href="#">Ron</a> on 010111 April 000112011. Posted in <a href="#">Blog</a></p>
 
-<p class="uk-text-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+<pre><code class="text">You have a set of integers s, which originally contains all the numbers from 1 to n. Unfortunately, due to some error, one of the numbers in s got duplicated to another number in the set, which results in repetition of one number and loss of another number.
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+You are given an integer array nums representing the data status of this set after the error.
+
+Find the number that occurs twice and the number that is missing and return them in the form of an array.</code></pre>
+
+<pre><code>
+Example 1:
+Input: nums = [1,2,2,4]
+Output: [2,3]
+
+Example 2:
+Input: nums = [1,1]
+Output: [1,2]
+</code></pre>
 
 <pre><code class="python">
+from collections import Counter
 from typing import List
 
 class Solution:
-    def largestPerimeter(self, nums: List[int]) -> int:
-        _len = len(nums)
-        nums.sort()
+    def findErrorNums2(self, nums: List[int]) -> List[int]:
+        _x = sum(nums) - sum(set(nums))
+        _y = sum(range(1, len(nums)+1)) - sum(set(nums))
+        return [_x, _y]
         
-        for i in range(_len-1, 1, -1): #range(start, stop, step)
-            if nums[i] < nums[i-1] + nums[i-2]:
-                return nums[i] + nums[i-1] + nums[i-2]
-        return 0
+    def findErrorNums3(self, nums: List[int]) -> List[int]:
+        '''
+        [1,2,2,4]
+        n = 4, range_sum = 10, actual_sum = 9, set_sum = 7
+        duplicate = actual_sum - set_sum = 2
+        missing = range_sum - set_sum = 3
+        answer = [2,3]
+        '''
+        n = len(nums)
+        #range_sum = sum(range(1, n+1)) # 1 + 2 + 3 + 4 = 10
+        range_sum  = n*(n+1)//2  # this formula also works, probably faster
+        actual_sum = sum(nums)
+        set_sum    = sum(set(nums))
+        return [actual_sum - set_sum, range_sum - set_sum]
+        
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        _len      = len(nums)
+        range_sum = 0
+        
+        dublicate = Counter(nums).most_common(1)[0][0]
+        
+        for i in range(1, _len+1): 
+            range_sum += i
+            
+        missing = range_sum-sum(set(nums))
+            
+        return [dublicate, missing]
         
 s = Solution()
-        
-print(s.largestPerimeter([3,2,2,1,1,3,1]))#8
-print(s.largestPerimeter([3,2,3,4]))#10
-print(s.largestPerimeter([2,1,2]))#5
-print(s.largestPerimeter([1,2,1]))#0
+
+print(s.findErrorNums([4,1,2,2]))#[2,3]
+print(s.findErrorNums([2,3,2]))#[2,1]
+print(s.findErrorNums([3,2,2]))#[2,1]
+print(s.findErrorNums([2,2]))#[2,1]
+print(s.findErrorNums([1,2,2,4]))#[2,3]
+print(s.findErrorNums([1,1]))#[1,2]
 </code></pre>
 
 </article>
