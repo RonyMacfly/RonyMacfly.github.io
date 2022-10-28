@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Group Anagrams [theory task]</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<link rel="icon" type="image/x-icon" href="shared/favicon.png">
+
+<!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit-icons.min.js"></script>
+
+<!-- highlight js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<link rel="stylesheet" href="stackoverflow-light.css">
+
+<!-- highlight auto line wrap -->
+<style>
+pre, code {
+    white-space: pre-wrap;
+}
+</style>
+
+<!-- menu JS -->
+<script>
+document.addEventListener('DOMContentLoaded', function()
+{ 
+    const url = "menu.html"
+    fetch(url)
+   .then( r => r.text() )
+   .then( t => document.getElementById("menu").innerHTML = t )
+}, false);
+</script>
+
+</head>
+
+<body class="uk-container"> 
+
+<div id="menu"></div>
+
+<article class="uk-article">
+<h1<a class="uk-link-reset" href="">Group Anagrams</a></h1>
+<p class="uk-article-meta">Written by <a href="#">Ron</a> on 010111 April 000112011. Posted in <a href="#">Blog</a></p>
+
+<pre><code class="text">Given an array of strings strs, group the anagrams together. You can return the answer in any order.
+
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+Constraints:
+1 <= strs.length <= 104
+0 <= strs[i].length <= 100
+strs[i] consists of lowercase English letters.
+</code></pre>
+
+<pre><code>
+Example 1:
+
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+Example 2:
+Input: strs = [""]
+Output: [[""]]
+
+Example 3:
+Input: strs = ["a"]
+Output: [["a"]]
+</code></pre>
+
+<pre><code class="python">
+from typing import List
+from collections import Counter
+from collections import defaultdict
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        dic = defaultdict(list)
+        
+        for s in strs:
+            dic[tuple(sorted(s))].append(s)
+            
+        #print(dic)
+        return dic.values()
+        
+s = Solution()
+
+print(s.groupAnagrams(["ddddddddddg","dgggggggggg"]))#[["dgggggggggg"],["ddddddddddg"]]
+print(s.groupAnagrams(["eat","tea","tan","ate","nat","bat"]))#[["bat"],["nat","tan"],["ate","eat","tea"]]
+print(s.groupAnagrams([""]))#[[""]]
+print(s.groupAnagrams(["a"]))#[["a"]]
+</code></pre>
+
+</article>
+</body>
+</html>
