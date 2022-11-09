@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Make The String Great [theory task]</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<link rel="icon" type="image/x-icon" href="shared/favicon.png">
+
+<!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit-icons.min.js"></script>
+
+<!-- highlight js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<link rel="stylesheet" href="stackoverflow-light.css">
+
+<!-- highlight auto line wrap -->
+<style>
+pre, code {
+    white-space: pre-wrap;
+}
+</style>
+
+<!-- menu JS -->
+<script>
+document.addEventListener('DOMContentLoaded', function()
+{ 
+    const url = "menu.html"
+    fetch(url)
+   .then( r => r.text() )
+   .then( t => document.getElementById("menu").innerHTML = t )
+}, false);
+</script>
+
+</head>
+
+<body class="uk-container"> 
+
+<div id="menu"></div>
+
+<article class="uk-article">
+<h1<a class="uk-link-reset" href="">Make The String Great</a></h1>
+<p class="uk-article-meta">Written by <a href="#">Ron</a> on 010111 April 000112011. Posted in <a href="#">Blog</a></p>
+
+<pre><code class="text">
+Given a string s of lower and upper case English letters.
+
+A good string is a string which doesn't have two adjacent characters s[i] and s[i + 1] where:
+
+0 <= i <= s.length - 2
+s[i] is a lower-case letter and s[i + 1] is the same letter but in upper-case or vice-versa.
+To make the string good, you can choose two adjacent characters that make the string bad and remove them. You can keep doing this until the string becomes good.
+
+Return the string after making it good. The answer is guaranteed to be unique under the given constraints.
+
+Notice that an empty string is also good.
+</code></pre>
+
+<pre><code>
+Example 1:
+Input: s = "leEeetcode"
+Output: "leetcode"
+Explanation: In the first step, either you choose i = 1 or i = 2, both will result "leEeetcode" to be reduced to "leetcode".
+
+Example 2:
+Input: s = "abBAcC"
+Output: ""
+Explanation: We have many possible scenarios, and all lead to the same answer. For example:
+"abBAcC" --> "aAcC" --> "cC" --> ""
+"abBAcC" --> "abBA" --> "aA" --> ""
+
+Example 3:
+Input: s = "s"
+Output: "s"
+</code></pre>
+
+<pre><code class="python">
+class Solution:
+    def makeGood(self, s: str) -> str:
+        
+        s = list(s)
+        _len = len(s)
+        i = 0
+        
+        while i < _len:
+            _len = len(s)
+            #print(s, _len, i)
+            
+            if not s: return ""
+            
+            if s[i].isupper():
+                low = s[i].lower()
+                
+                if i+1 < _len:
+                    if low == s[i+1]:
+                        del s[i+1]
+                        del s[i]
+                        i = 0
+                        continue
+                        
+                if i-1 < _len and 0 <= i-1:
+                    if low == s[i-1]:
+                        del s[i]
+                        del s[i-1]
+                        i = 0
+                        continue
+                        
+            i += 1
+        
+        return "".join(s)
+        
+        
+s = Solution()
+
+print(s.makeGood("WpubBUPwG"))
+print(s.makeGood("pP"))#""
+print(s.makeGood("Pp"))#""
+print(s.makeGood("Hvh"))#Hvh
+print(s.makeGood("leEeetcode"))#leetcode
+print(s.makeGood("abBAcC"))#""
+print(s.makeGood("s"))#s
+</code></pre>
+
+</article>
+</body>
+</html>

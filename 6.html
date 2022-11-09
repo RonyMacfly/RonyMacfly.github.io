@@ -1,7 +1,8 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-<title>Rony Macfly Github page</title>
+<title> Reverse Vowels of a String [theory task]</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 <meta content="utf-8" http-equiv="encoding">
@@ -19,14 +20,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 <link rel="stylesheet" href="stackoverflow-light.css">
+
+<!-- highlight auto line wrap -->
 <style>
 pre, code {
     white-space: pre-wrap;
 }
 </style>
-
-<!-- jquery JS 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>-->
 
 <!-- menu JS -->
 <script>
@@ -40,22 +40,50 @@ document.addEventListener('DOMContentLoaded', function()
 </script>
 
 </head>
-    
-<body class="uk-container"><br>
+
+<body class="uk-container"> 
 
 <div id="menu"></div>
 
-<!-- for copy
-<a href=".html"><pre><code>...</code></pre></a>
--->
-<a href="6.html"><pre><code>Reverse Vowels of a String [theory task]</code></pre></a>
-<a href="5.html"><pre><code>Maximum 69 Number [theory task]</code></pre></a>
-<a href="4.html"><pre><code>Make The String Great [theory task]</code></pre></a>
-<a href="3.html"><pre><code>Group Anagrams [theory task]</code></pre></a>
-<a href="2.html"><pre><code>Set Mismatch [theory task]</code></pre></a>
-<a href="1.html"><pre><code>Largest Perimeter Triangle [theory task]</code></pre></a>
+<article class="uk-article">
+<h1<a class="uk-link-reset" href="">Make The String Great</a></h1>
+<p class="uk-article-meta">Written by <a href="#">Ron</a> on 010111 April 000112011. Posted in <a href="#">Blog</a></p>
+
+<pre><code class="text">
+Given a string s, reverse only all the vowels in the string and return it.
+
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+</code></pre>
+
+<pre><code>
+Example 1:
+Input: s = "hello"
+Output: "holle"
+</code></pre>
+
+<pre><code class="python">
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        vowels = []
+        _str = list(s)
+        
+        for i in range(len(s)):
+            if s[i] in "aeiouAEIOU":
+                vowels.append(s[i])
+        
+        for i in range(len(s)):
+            if s[i] in "aeiouAEIOU":
+                _str[i] = vowels.pop()
+        
+        return ''.join(_str)
+        
+s = Solution()
 
 
+print(s.reverseVowels("aA"))#"Aa"
+print(s.reverseVowels("hello"))#"holle"
+</code></pre>
+
+</article>
 </body>
 </html>
-
