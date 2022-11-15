@@ -21,8 +21,21 @@
 <script>hljs.highlightAll();</script>
 <link rel="stylesheet" href="stackoverflow-light.css">
 <style>
-pre, code {
+/* dark mode */
+pre {
     white-space: pre-wrap;
+    color: rgb(168, 160, 149);
+    border-color: rgb(55, 60, 62);
+    background-color: rgb(24, 26, 27);
+    background-image: none;
+}
+code {
+    white-space: pre-wrap;
+}
+.hljs {
+    color: rgb(200, 195, 188);
+    background-color: rgb(29, 32, 33);
+    background-image: none;
 }
 </style>
 
@@ -36,7 +49,23 @@ document.addEventListener('DOMContentLoaded', function()
    .then( t => document.getElementById("menu").innerHTML = t )
 }, false);
 </script>
+<style>
+/* dark mode */
+html {
+    background-color: #121212;
+}
+.uk-button-default {
+    background-color: transparent;
+    color: rgb(200, 195, 188);
+    border-color: rgb(55, 60, 62);
+}
+.uk-button-default:hover {
+    background-color: transparent;
+    color: rgb(200, 195, 188);
+    border-color: rgb(70, 76, 78);
 
+}
+</style>
 </head>
 
 <body class="uk-container"> 
