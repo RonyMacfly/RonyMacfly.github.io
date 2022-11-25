@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Word Search [theory task]</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<link rel="icon" type="image/x-icon" href="shared/favicon.png">
+
+<!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit-icons.min.js"></script>
+
+<!-- highlight js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<link rel="stylesheet" href="stackoverflow-light.css">
+
+<!-- highlight auto line wrap -->
+<style>
+pre, code {
+    white-space: pre-wrap;
+}
+</style>
+
+<!-- menu JS -->
+<script>
+document.addEventListener('DOMContentLoaded', function()
+{ 
+    const url = "menu.html"
+    fetch(url)
+   .then( r => r.text() )
+   .then( t => document.getElementById("menu").innerHTML = t )
+}, false);
+</script>
+
+</head>
+
+<body class="uk-container"> 
+
+<div id="menu"></div>
+
+<article class="uk-article">
+<h1<a class="uk-link-reset" href="">Word Search</a></h1>
+<p class="uk-article-meta">Written by <a href="#">Ron</a> on 010111 April 000112011. Posted in <a href="#">Blog</a></p>
+
+<pre><code class="text">
+Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+
+The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
+</code></pre>
+
+<pre><code>
+Example 1:
+Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
+Output: true
+
+Example 2:
+Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "SEE"
+Output: true
+
+Example 3:
+Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCB"
+Output: false
+</code></pre>
+
+<pre><code class="python">
+from typing import List
+from collections import Counter
+
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        
+        R = len(board)
+        C = len(board[0])
+        
+        # if word > board
+        if len(word) > R*C: return False
+        
+        # count chars board < chars word
+        count = Counter(sum(board, []))
+        for c, countWord in Counter(word).items():
+            if count[c] < countWord: return False
+                        
+        seen = set()
+        
+        def dfs(r, c, i):
+            if i == len(word): return True
+            
+            print(r, c, i, seen)
+            
+            if r < 0  \
+            or c < 0  \
+            or r >= R \
+            or c >= C \
+            or word[i] != board[r][c] \
+            or (r,c) in seen:
+                return False
+                
+            print(r, c, i, seen, "find")
+            
+            seen.add((r,c))
+            res = (
+                dfs(r+1,c,i+1) or 
+                dfs(r-1,c,i+1) or
+                dfs(r,c+1,i+1) or
+                dfs(r,c-1,i+1) 
+            )
+            print("res", res)
+            seen.remove((r,c))
+            print(seen)
+
+            return res
+        
+        for r in range(R):
+            for c in range(C):
+                print("---")
+                if dfs(r,c,0): return True
+                
+        return False
+    
+       
+s = Solution()       
+
+print(s.exist([
+["C","A","A"],
+["A","A","A"],
+["B","C","D"]], "AAB"))#true
+
+print(s.exist([["a","a"]], "a"))#true
+print(s.exist([
+["A","B","C","E"],
+["S","F","C","S"],
+["A","D","E","E"]], "ABCCED"))#true
+print(s.exist([
+["A","B","C","E"],
+["S","F","C","S"],
+["A","D","E","E"]], "SEE"))#true
+print(s.exist([
+["A","B","C","E"],
+["S","F","C","S"],
+["A","D","E","E"]], "ABCB"))#false
+</code></pre>
+
+</article>
+</body>
+</html>
