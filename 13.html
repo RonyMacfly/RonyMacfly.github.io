@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>How to Convert Webp to Gif in Linux [Linux]</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<link rel="icon" type="image/x-icon" href="shared/favicon.png">
+
+<!-- UIkit CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit-icons.min.js"></script>
+
+<!-- highlight js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<link rel="stylesheet" href="stackoverflow-light.css">
+
+<!-- highlight auto line wrap -->
+<style>
+pre, code {
+    white-space: pre-wrap;
+}
+</style>
+
+<!-- menu JS -->
+<script>
+document.addEventListener('DOMContentLoaded', function()
+{ 
+    const url = "menu.html"
+    fetch(url)
+   .then( r => r.text() )
+   .then( t => document.getElementById("menu").innerHTML = t )
+}, false);
+</script>
+
+</head>
+
+<body class="uk-container"> 
+
+<div id="menu"></div>
+
+<article class="uk-article">
+<h1<a class="uk-link-reset" href="">How to Convert Webp to Gif in Linux</a></h1>
+<p class="uk-article-meta">Written by <a href="#">Ron</a> on 010111 April 000112011. Posted in <a href="#">Blog</a></p>
+
+<pre><code class="text">
+</code></pre>
+
+<pre><code>
+</code></pre>
+
+<pre><code class="python">
+sudo apt install imagemagick
+
+mogrify -format gif /home/folder/*.webp
+
+----
+mogrify -format pdf -path /home/folder /home/folder/*.jpg
+magick mogrify -format pdf /home/folder/*.jpg
+</code></pre>
+
+</article>
+</body>
+</html>
